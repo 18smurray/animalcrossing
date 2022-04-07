@@ -5,18 +5,19 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { PersonalityMatrix } from './Personality';
 
-export default function VillagerInfo(props) {
+function VillagerInfo(props) {
     
     const [villager, setVillager] = useState([]);
+    const {roster, setRoster} = props;
     
     const params = useParams();
     const villagerId = params.villagerIndex;
 
     useEffect(() => {
         getVillagerInfo()
-      }, [villager])
-      // Have to have villager as dependency so that the page rerenders when target villager changes
-      // Solves being on details page and switching to another from the roster
+      }, [params])
+      // Had villager as dependency - leads to endless requests...
+      // Switch to params - indicates a change in the hash :)
 
     const clarifyName = (data) => {
         data.name = data.name["name-USen"]
@@ -39,15 +40,18 @@ export default function VillagerInfo(props) {
                     <h3 className='canidateName'>{villager.name}</h3>
                 </div>
                 <div className='villagerContent'>
-                    <img src={villager.image_uri} className="profilePic"></img>
+                    <img src={villager.image_uri} className="detailsPic"></img>
                     <div className='canidateDetails'>
+                        
+                        <div className='listTitle'>DETAILS</div>
                         Species: {villager.species}<br/>
                         Gender: {villager.gender} <br/>
                         Birthday: {villager["birthday-string"]} <br/>
                         Personality: {villager.personality} <br/>
                         Catch Phrase: "{villager["catch-phrase"]}"<br/>
                     </div>
-                    <PersonalityMatrix/>
+                    <PersonalityMatrix roster={roster} setRoster={setRoster} currentVillager={villager}/>
+                   
                 </div>
                 <Link to="/">
                     <button className='canidateButton'>BACK TO BROWSING</button>
@@ -57,3 +61,5 @@ export default function VillagerInfo(props) {
         </section>
     )
 }
+
+export {VillagerInfo};

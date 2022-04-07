@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Dashboard} from './Dashboard.js';
 import {HashRouter as Router, Routes, Route} from 'react-router-dom';
-import VillagerInfo from './Villager.js';
+import {VillagerInfo} from './Villager.js';
 import Header from './Header.js';
 import {VillageRoster} from './VillageRoster.js';
 

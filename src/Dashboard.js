@@ -48,21 +48,24 @@ function Dashboard(props) {
     }
   
     const recruitVillager = (villager) => {
-      // Append instead of erase state
-      setRoster(state => {
-        const villagerExists = (state.filter(v => villager.id == v.id).length > 0);
-        
-        if (!villagerExists) {
-            state = [...state, villager]
-            state.sort(function (a, b) {
-                return a.id - b.id
-            })
-        }
-        return state
-      });
-      setUsedIds([...usedIds, villager.id]);
-      
-      canidateApproaches();
+
+      if (roster.length < 10) {
+        // Append instead of erase state
+        setRoster(state => {
+          const villagerExists = (state.filter(v => villager.id == v.id).length > 0);
+          
+          if (!villagerExists) {
+              state = [...state, villager]
+              state.sort(function (a, b) {
+                  return a.id - b.id
+              })
+          }
+          return state
+        });
+        setUsedIds([...usedIds, villager.id]);
+        canidateApproaches();
+      }
+      // Add a different function here!
     }
   
     const skipVillager = () => {
@@ -71,6 +74,9 @@ function Dashboard(props) {
   
     return (
         <section className='currentCanidate'>
+          {/* { showModal &&
+            (<Modal />)
+          } */}
           <h2>Island Visitor</h2>
           <img src={canidate.image_uri} className="profilePic"></img>
           <h3 className='canidateName'>{canidate.name}</h3>

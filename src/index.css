@@ -5,6 +5,17 @@
   text-align: center;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
@@ -70,7 +81,7 @@ header {
 }
 
 .currentCanidate .profilePic {
-  width: 150px;
+  height: 200px;
 }
 
 .currentCanidate h3 {
@@ -78,6 +89,7 @@ header {
   text-transform: uppercase;
   font-weight: 700;
   text-align: center;
+  padding-top: 5px;
 }
 
 .currentCanidate .btn-group {
@@ -158,6 +170,19 @@ header {
   padding-left: 2%;
 }
 
+.personalityDetails {
+  font-size: 20px;
+  color: #F3F3F3;
+  font-weight: 300;
+  text-align: left;
+  padding-left: 2%;
+}
+
+.listTitle {
+  font-weight: 600;
+  text-align: left;
+}
+
 .villagerIcon {
   height: 60px;
 }
@@ -177,4 +202,16 @@ header {
   color: #171717;
   font-weight: 700;
   cursor: pointer;
+}
+
+.personalityList {
+  width: 120%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.detailsPic {
+  height: 250px;
 }
