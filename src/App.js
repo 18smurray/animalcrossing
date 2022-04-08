@@ -4,10 +4,12 @@ import {HashRouter as Router, Routes, Route} from 'react-router-dom';
 import {VillagerInfo} from './Villager.js';
 import Header from './Header.js';
 import {VillageRoster} from './VillageRoster.js';
+import { SearchBar } from './SearchBar.js';
+import axios from 'axios';
 
 function App() {
     const [roster, setRoster] = useState([]);
-    const [usedIds, setUsedIds] = useState([]);
+    const [usedIds, setUsedIds] = useState([]); 
 
     return (
         <Router>
@@ -16,6 +18,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Dashboard roster={roster} setRoster={setRoster} usedIds={usedIds} setUsedIds={setUsedIds}/>} />
                     <Route path="/villager/:villagerIndex" element={<VillagerInfo roster={roster} setRoster={setRoster} />} />
+                    <Route path="/search" element={<SearchBar /> } />
                 </Routes>
                 <VillageRoster roster={roster} setRoster={setRoster} usedIds={usedIds} setUsedIds={setUsedIds}/>
             </div>

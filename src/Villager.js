@@ -56,6 +56,7 @@ function VillagerInfo(props) {
                 <Link to="/">
                     <button className='canidateButton'>BACK TO BROWSING</button>
                 </Link>
+                
          
             </section>
         </section>

@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import './index.css';
-import {Link} from 'react-router-dom';
-import VillageRoster from './VillageRoster.js';
+import { Modal } from './Modal';
 
 function Dashboard(props) {
 
@@ -10,6 +9,7 @@ function Dashboard(props) {
     const TOTAL_IDS = 391;
 
     const [canidate, setCanidate] = useState({});
+    const [showModal, setShowModal] = useState(false);
     const {roster, setRoster} = props;
     const {usedIds, setUsedIds} = props;
 
@@ -63,9 +63,12 @@ function Dashboard(props) {
           return state
         });
         setUsedIds([...usedIds, villager.id]);
+        setShowModal(false);
         canidateApproaches();
       }
-      // Add a different function here!
+      else {
+        setShowModal(true);
+      }
     }
   
     const skipVillager = () => {
@@ -74,12 +77,12 @@ function Dashboard(props) {
   
     return (
         <section className='currentCanidate'>
-          {/* { showModal &&
-            (<Modal />)
-          } */}
           <h2>Island Visitor</h2>
           <img src={canidate.image_uri} className="profilePic"></img>
           <h3 className='canidateName'>{canidate.name}</h3>
+          { showModal &&
+            (<Modal />)
+          }
           <div className="btn-group">
             <button className='canidateButton' data-inline="true" onClick={() => skipVillager()}>SKIP</button>
             <button className='canidateButton' data-inline="true" onClick={() => recruitVillager(canidate)}>RECRUIT</button>
