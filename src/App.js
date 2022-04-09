@@ -17,7 +17,7 @@ function App() {
                 <Header></Header>
                 <Routes>
                     <Route path="/" element={<Dashboard roster={roster} setRoster={setRoster} usedIds={usedIds} setUsedIds={setUsedIds}/>} />
-                    <Route path="/villager/:villagerIndex" element={<VillagerInfo roster={roster} setRoster={setRoster} />} />
+                    <Route path="/villager/:villagerIndex" element={<VillagerInfo roster={roster} setRoster={setRoster} usedIds={usedIds} setUsedIds={setUsedIds} />} />
                     <Route path="/search" element={<SearchBar /> } />
                 </Routes>
                 <VillageRoster roster={roster} setRoster={setRoster} usedIds={usedIds} setUsedIds={setUsedIds}/>

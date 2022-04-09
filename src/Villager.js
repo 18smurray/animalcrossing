@@ -4,11 +4,13 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { PersonalityMatrix } from './Personality';
+import { ActFromProfile } from './ActFromProfile';
 
 function VillagerInfo(props) {
     
     const [villager, setVillager] = useState([]);
     const {roster, setRoster} = props;
+    const {usedIds, setUsedIds} = props;
     
     const params = useParams();
     const villagerId = params.villagerIndex;
@@ -56,8 +58,7 @@ function VillagerInfo(props) {
                 <Link to="/">
                     <button className='canidateButton'>BACK TO BROWSING</button>
                 </Link>
-                
-         
+                <ActFromProfile roster={roster} setRoster={setRoster} currentVillager={villager} usedIds={usedIds} setUsedIds={setUsedIds}/>
             </section>
         </section>
     )

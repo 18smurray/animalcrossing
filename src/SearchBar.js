@@ -2,12 +2,17 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { SearchResult } from './SearchResult';
+import spinner from './spinner.gif';
 
 function SearchBar() {
 
     const [searchName, setSearchName] = useState({name: ""});
     const [searchInfoDict, setSearchInfoDict] = useState({});
     const [result, setResult] = useState([]);
+    // Will either be inactive, pending, or active
+    const [resultStatus, setResultStatus] = useState("inactive");
+    const [isLoading, setIsLoading] = useState(false);
+    
     let searchPairs = {};
 
     useEffect(() => {
@@ -26,6 +31,10 @@ function SearchBar() {
         e.preventDefault()
         // console.log(searchName.name);
         // console.log("HANDLE SUBMIT", searchInfoDict)
+
+        // Change resultStatus to pending
+        setResultStatus("pending");
+        setIsLoading(true);
         
         if (searchName.name in searchInfoDict){
             // Change what gets rendered in SearchResult
@@ -33,7 +42,7 @@ function SearchBar() {
         }
         //else if - could try something with partial
         else {
-            setResult([]);
+            setResult([-1000]);
         }
     };
 
@@ -53,14 +62,19 @@ function SearchBar() {
     }
     
     return (
-        <section className='searchBar'>
+        <section className='currentCanidate'>
             <h2>Search Villagers</h2>
             
-            <label for="searchInput">Villager Name</label><br />
-            <input type="text" id="searchInput" name="name" onChange={handleChange} /><br /><br />
-            <button onClick={handleSubmit}>Search</button>
-            <SearchResult result={result} setResult={setResult}/>
-
+            <label for="searchInput" className="searchPrompt">Enter Villager Name</label><br />
+            <input type="text" id="searchInput" name="name" onChange={handleChange} /><br />
+            <button className="canidateButton" onClick={handleSubmit}>Search</button><br />
+           
+            {isLoading && result[0] !== -1000 ? 
+                <img src={spinner} className="villagerIcon" />  
+                : null      
+            }
+            <SearchResult result={result} setResult={setResult} resultStatus={resultStatus} setResultStatus={setResultStatus} isLoading={isLoading} setIsLoading={setIsLoading}/>
+            
       </section>
     )
 }

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import './index.css';
 import { Modal } from './Modal';
+import spinner from './spinner.gif';
 
 function Dashboard(props) {
 
@@ -10,6 +11,7 @@ function Dashboard(props) {
 
     const [canidate, setCanidate] = useState({});
     const [showModal, setShowModal] = useState(false);
+    const [imageLoading, setImageLoading] = useState(true);
     const {roster, setRoster} = props;
     const {usedIds, setUsedIds} = props;
 
@@ -78,7 +80,17 @@ function Dashboard(props) {
     return (
         <section className='currentCanidate'>
           <h2>Island Visitor</h2>
-          <img src={canidate.image_uri} className="profilePic"></img>
+          <div className="images">
+          <img 
+            src={canidate.image_uri} 
+            className="profilePic"
+            onLoad={() => setImageLoading(false)}
+          />
+ 
+          {imageLoading ? (
+            <img src={spinner} className="spinner"></img>
+          ) : null}
+          </div>
           <h3 className='canidateName'>{canidate.name}</h3>
           { showModal &&
             (<Modal />)
