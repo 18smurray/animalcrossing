@@ -81,15 +81,14 @@ function Dashboard(props) {
         <section className='currentCanidate'>
           <h2>Island Visitor</h2>
           <div className="images">
-          <img 
-            src={canidate.image_uri} 
-            className="profilePic"
-            onLoad={() => setImageLoading(false)}
-          />
- 
-          {imageLoading ? (
-            <img src={spinner} className="spinner"></img>
-          ) : null}
+            <img 
+              src={canidate.image_uri} 
+              className="profilePicDash"
+              onLoad={() => setImageLoading(false)}
+            />
+            {imageLoading ? (
+              <img src={spinner} className="spinner"></img>
+            ) : null}
           </div>
           <h3 className='canidateName'>{canidate.name}</h3>
           { showModal &&

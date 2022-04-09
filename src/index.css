@@ -94,8 +94,20 @@ header {
 }
 
 .images {
-  margin: auto;
-  display:inline-block;
+  display: grid;
+  justify-items: center;
+}
+
+.profilePicDash {
+  height: 200px;
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.spinner {
+  height: 200px;
+  grid-row: 1;
+  grid-column: 1;
 }
 
 .currentCanidate .btn-group {
@@ -280,8 +292,4 @@ header {
   font-weight: 600;
 }
 
-.spinner {
-  position: relative;
-  height: 200px;
-}
 
