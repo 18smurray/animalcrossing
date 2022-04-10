@@ -33,12 +33,12 @@ function ActFromProfile(props) {
     // If villager is not in roster AND the roster is not full, have option to add them
     if(roster.some(e => e.id == currentVillager.id)) {
         return (
-            <button className='canidateButton' onClick={() => evictVillager(currentVillager.id)}>REMOVE FROM ROSTER</button>
+            <button className='canidateButton' onClick={() => evictVillager(currentVillager.id)}>REMOVE</button>
           )
       }
     else if (roster.length < 10){
         return (
-            <button className='canidateButton' onClick={() => recruitVillager(currentVillager)}>ADD TO ROSTER</button>
+            <button className='canidateButton' onClick={() => recruitVillager(currentVillager)}>REGISTER</button>
           )
     }
     else {

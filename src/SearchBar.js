@@ -4,20 +4,14 @@ import { useEffect, useState } from 'react';
 import { SearchResult } from './SearchResult';
 import spinner from './spinner.gif';
 
-function SearchBar() {
+function SearchBar(props) {
 
     const [searchName, setSearchName] = useState({name: ""});
-    const [searchInfoDict, setSearchInfoDict] = useState({});
     const [result, setResult] = useState([]);
     // Will either be inactive, pending, or active
     const [resultStatus, setResultStatus] = useState("inactive");
     const [isLoading, setIsLoading] = useState(false);
-    
-    let searchPairs = {};
-
-    useEffect(() => {
-        getSearchData()
-      }, [])
+    const {searchDict, setSearchDict} = props;
 
     const handleChange = (e) => {
         setSearchName({
@@ -36,30 +30,15 @@ function SearchBar() {
         setResultStatus("pending");
         setIsLoading(true);
         
-        if (searchName.name in searchInfoDict){
+        if (searchName.name in searchDict){
             // Change what gets rendered in SearchResult
-            setResult([searchInfoDict[searchName.name]]);
+            setResult([searchDict[searchName.name]]);
         }
         //else if - could try something with partial
         else {
             setResult([-1000]);
         }
     };
-
-    const clarifyName = (data) => {
-        data.name = data.name["name-USen"]
-    }
-  
-    const getSearchData = () => {
-        for (let i = 1; i <= 391; i++){
-            axios.get("https://acnhapi.com/v1/villagers/" + i)
-            .then(response => {
-                clarifyName(response.data);
-                searchPairs[(response.data.name).toLowerCase()] = response.data.id;
-            })
-        }
-        setSearchInfoDict(searchPairs);
-    }
     
     return (
         <section className='currentCanidate'>

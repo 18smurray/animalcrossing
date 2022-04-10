@@ -15,7 +15,7 @@ function VillageRoster(props) {
 
     return (
       <section className='villagerRoster'>
-          <h2>Current Residents</h2>
+          <h2>Villager Roster</h2>
           <div className='villagerList'>
             {roster.map(villager => (
                 <div className="villager" key={villager.id}>

@@ -3,15 +3,25 @@
   padding: 0;
   box-sizing: border-box;
   text-align: center;
+  height:auto;
+}
+
+#root {
+  height: 100vh;
+}
+
+.App {
+  height: 100vh;
+  background-color: #fff893;
 }
 
 a {
-  color: white;
+  color: #fff893;
   text-decoration: none;
 }
 
 a:hover {
-  color: white;
+  color: #fff893;
   text-decoration: underline;
 }
 
@@ -21,6 +31,7 @@ body {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
 }
 
 .app-wrapper {
@@ -43,15 +54,16 @@ header {
 }
 
 .title{
-  color: #171717;
-  font-size: 32px;
+  color: #fff893;
+  font-size: 28px;
   text-transform: uppercase;
   font-weight: 900;
   line-height: 1;
+  text-align: left;
 }
 
 .subtitle{
-  color: #171717;
+  color: #fff893;
   font-size: 14px;
   text-transform: uppercase;
   font-weight: 300;
@@ -63,7 +75,7 @@ header {
   background-image: url("./leavesbackground.jpg");
   background-color: rgba(4, 80, 73, 0.8); /* Tint color */
   background-blend-mode: multiply;
-  padding: 15px;
+  padding: 20px;
 }
 
 .canidateName {
@@ -129,24 +141,29 @@ header {
   cursor: pointer;
 }
 
-.currentCanidate .canidateButton:active {
-  background: #F7A800;
+.currentCanidate .canidateButton:hover {
   background: #a76d1d;
   border: solid 4px #704913;
 }
 
 
 .villagerRoster {
-  flex: 1;
   padding: 15px;
   display: flex;
   flex-flow: column;
+  background-color: #fff893;
+  
+}
+
+.villagerRoster h2 {
+  color: #6d4814;
+  text-transform: uppercase;
 }
 
 .villagerList {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   grid-gap: 15px;
   margin-bottom: 4%;
 }
@@ -157,7 +174,8 @@ header {
   flex-flow: column;
   min-height: 150px;
   padding: 15px;
-  background: #F3F3F3;
+  background: #6d4814;
+  border: solid 4px #352309;
 }
 
 .villagerList .villager .remove {
@@ -186,7 +204,7 @@ header {
 
 .canidateDetails {
   font-size: 20px;
-  color: #F3F3F3;
+  color: #9DFFB0;
   font-weight: 300;
   text-align: left;
   padding-left: 2%;
@@ -203,6 +221,7 @@ header {
 .listTitle {
   font-weight: 600;
   text-align: left;
+  color: #fff893;
 }
 
 .villagerIcon {
@@ -215,15 +234,32 @@ header {
   padding-bottom: 10px;
 }
 
+.villagerName {
+  margin-top: 10px;
+  color: #fff893;
+}
+
 .moreInfo {
   width: 100px;
   height: 35px;
-  background: #FFCE00;
-  border: none;
+  background-color: #9DFFB0;
+  border: solid 4px #70b87e;
   outline: none;
-  color: #171717;
+  color: #02544B;
   font-weight: 700;
   cursor: pointer;
+}
+
+.moreInfo:hover {
+  background-color: #58bb6c;
+  border: solid 4px #446d4c;
+  outline: none;
+}
+
+.searchButton:hover {
+  background-color: #58bb6c;
+  border: solid 4px #446d4c;
+  outline: none;
 }
 
 .personalityList {
@@ -239,9 +275,9 @@ header {
 }
 
 .modal {
-  color: #6d4814;
   width: 75%;
-  background-color: #dbbf93;
+  background-color: #9DFFB0;
+  border: solid 4px #70b87e;
   display: block;
   position: relative;
   margin: auto;
@@ -256,19 +292,23 @@ header {
   font-weight: 800;
   padding-top: 10px;
   margin: 0;
-  color: #6d4814;
+  color: #02544B;
 }
 
 .modalSubtext {
-  color: #6d4814;
+  color: #02544B;
   font-weight: bold;
 }
 
+
 .searchButton {
   padding: 5px;
-  border: none;
-  background-color: green;
-  color: white;
+  margin: 5px;
+  border: solid 4px #70b87e ;
+  background-color: #9DFFB0;;
+  color: #02544B;
+  font-weight:bold;
+  font-size: 14px;
 }
 
 .appHeader {
@@ -276,30 +316,35 @@ header {
   right: 0;
   display: flex;
   flex-direction: row;
+  background-color: #6d4814;
 }
 
 .centerHead {
   display: flex;
   flex: 1;
-  justify-content: center;
+  align-items: baseline;
   flex-direction: column;
-  padding-right: 10%;
+  padding-left: 15%;
+  padding-right: 15%;
 }
 
 .searchPrompt {
-  color: white;
+  color: #fff893;
 }
 
 .searchResult {
-  color: white;
+  color: #fff893;
 }
 
 .noResults {
-  color: white;
+  color: #fff893;
   padding-top: 20px;
   font-weight: 600;
 }
 
+.noResults h5 {
+  font-size: 16px;
+}
 
 /*
 Base color brown #6d4814;

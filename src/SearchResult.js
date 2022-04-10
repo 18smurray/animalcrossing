@@ -35,7 +35,7 @@ function SearchResult(props) {
     }
 
     if (resultStatus === "inactive"){
-        return <div>STATUS INACTIVE</div>
+        return 
     }
     else if (resultStatus === "pending"){
         if (foundVillager.length > 0){
@@ -53,9 +53,12 @@ function SearchResult(props) {
                             ))}
                         </div>
                     :
-                        <h4 onLoad={() => setIsLoading(false)} className="noResults">
-                            NO RESULTS
-                        </h4>
+                        <div className="noResults">
+                            <h4 onLoad={() => setIsLoading(false)}>
+                                NO RESULTS
+                            </h4>
+                            <h5>(Only exact matches will be returned)</h5>
+                        </div>
                     }
                 </div>
             )

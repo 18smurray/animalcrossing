@@ -5,14 +5,14 @@ export default function Header () {
     return (
         <header className="appHeader">
             <Link to="/">
-                <button className="searchButton">Home</button>
+                <button className="searchButton">HOME</button>
             </Link>
             <Link to="/search">
-                <button className="searchButton">Search Villager</button>
+                <button className="searchButton">SEARCH</button>
             </Link>
             <div className="centerHead">
-                <h1 className='title'>React Hooks</h1>
-                <h3 className='subtitle'>With Animal Crossing</h3>
+                <h1 className='title'>ANIMAL CROSSING VILLAGER EXPLORER</h1>
+                <h3 className='subtitle'>IS 542 REACT SEMESTER PROJECT</h3>
             </div>
         </header>
     )

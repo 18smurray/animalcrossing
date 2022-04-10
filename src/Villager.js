@@ -45,7 +45,7 @@ function VillagerInfo(props) {
                     <img src={villager.image_uri} className="detailsPic"></img>
                     <div className='canidateDetails'>
                         
-                        <div className='listTitle'>DETAILS</div>
+                        <div className='listTitle'>SUMMARY</div>
                         Species: {villager.species}<br/>
                         Gender: {villager.gender} <br/>
                         Birthday: {villager["birthday-string"]} <br/>
@@ -56,7 +56,7 @@ function VillagerInfo(props) {
                    
                 </div>
                 <Link to="/">
-                    <button className='canidateButton'>BACK TO BROWSING</button>
+                    <button className='canidateButton'>HOME</button>
                 </Link>
                 <ActFromProfile roster={roster} setRoster={setRoster} currentVillager={villager} usedIds={usedIds} setUsedIds={setUsedIds}/>
             </section>
