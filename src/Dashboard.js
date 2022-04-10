@@ -96,7 +96,7 @@ function Dashboard(props) {
           }
           <div className="btn-group">
             <button className='canidateButton' data-inline="true" onClick={() => skipVillager()}>SKIP</button>
-            <button className='canidateButton' data-inline="true" onClick={() => recruitVillager(canidate)}>RECRUIT</button>
+            <button className='canidateButton' data-inline="true" onClick={() => recruitVillager(canidate)}>REGISTER</button>
           </div>
         </section>
     )
