@@ -12,8 +12,9 @@ export default function Header () {
             </Link>
             <div className="centerHead">
                 <h1 className='title'>ANIMAL CROSSING VILLAGER EXPLORER</h1>
-                <h3 className='subtitle'>IS 542 REACT SEMESTER PROJECT</h3>
+                <h3 className='subtitle'>SHANNON MURRAY IS542 SEMESTER PROJECT</h3>
             </div>
         </header>
     )
 }
+

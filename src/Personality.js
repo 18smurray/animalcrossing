@@ -61,7 +61,7 @@ function PersonalityMatrix(props) {
     return (
       <div className='personalityDetails'> 
           <div className='listTitle'>LIKELY TO GET ALONG</div>
-          <div>
+          <div className="personalityListWrapper">
             <div className='personalityList'>
                 {harmonyVillagers.map(villager => (
                     <div key={villager.id}>

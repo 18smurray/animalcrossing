@@ -42,10 +42,12 @@ function VillagerInfo(props) {
                     <h3 className='canidateName'>{villager.name}</h3>
                 </div>
                 <div className='villagerContent'>
-                    <img src={villager.image_uri} className="detailsPic"></img>
+                    <div className='profilePicDiv'>
+                        <img src={villager.image_uri} className="detailsPic"></img>
+                    </div>
                     <div className='canidateDetails'>
                         
-                        <div className='listTitle'>SUMMARY</div>
+                        <div className='summaryTitle'>SUMMARY</div>
                         Species: {villager.species}<br/>
                         Gender: {villager.gender} <br/>
                         Birthday: {villager["birthday-string"]} <br/>

@@ -60,6 +60,8 @@ header {
   font-weight: 900;
   line-height: 1;
   text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .subtitle{
@@ -222,6 +224,17 @@ header {
   font-weight: 600;
   text-align: left;
   color: #fff893;
+  margin-bottom: 5px;
+}
+.summaryTitle {
+  font-weight: 600;
+  text-align: left;
+  color: #fff893;
+  margin-bottom: 5px;
+}
+
+.personalityListWrapper {
+  margin-bottom: 10px;
 }
 
 .villagerIcon {
@@ -317,6 +330,7 @@ header {
   display: flex;
   flex-direction: row;
   background-color: #6d4814;
+  border-bottom: solid 4px #352309;
 }
 
 .centerHead {
@@ -350,3 +364,105 @@ header {
 Base color brown #6d4814;
 Font color light yellow: #fff893;
 Dark green: 02544B */
+
+@media (max-width: 1175px) {
+  .centerHead {
+    padding: 0;
+    align-items: center;
+  }
+}
+
+@media (max-width: 870px) {
+  .personalityList {
+    width: 100%;
+  }
+}
+
+@media (max-width: 840px) {
+  .subtitle {
+    font-size: 10px;
+  }
+  .title {
+    font-size: 20px;
+  }
+  .centerHead {
+    align-items: center;
+  }
+}
+
+@media (max-width: 750px) {
+  .villagerContent {
+    display: grid;
+    grid-template-areas: 
+      "profilePic details"
+      "personality personality";
+    grid-template-columns: 60% 40%;
+  }
+
+  .listTitle {
+    text-align: center;
+  }
+  .profilePicDiv {
+    grid-area: profilePic;
+  }
+  .canidateDetails {
+    grid-area: details;
+  }
+  .personalityDetails {
+    grid-area: personality;
+    margin-top: 20px;
+  }
+  .personalityListWrapper {
+    justify-content: center;
+  }
+  .personalityList {
+    width: 60%;
+    margin: auto;
+  }
+
+}
+
+@media (max-width: 650px) {
+  .subtitle {
+    display: none;
+  }
+  .title {
+    text-align: center;
+  }
+}
+
+
+@media (max-width: 500px) {
+  .villagerContent {
+    display: grid;
+    grid-template-areas: 
+      "profilePic profilePic"
+      "details details"
+      "personality personality";
+  }
+
+  .summaryTitle {
+    text-align: center;
+  }
+  .profilePicDiv {
+    grid-area: profilePic;
+  }
+  .canidateDetails {
+    grid-area: details;
+    margin:auto;
+    margin-top: 20px;
+    text-align: center;
+  }
+  .personalityDetails {
+    grid-area: personality;
+    margin-top: 20px;
+  }
+  .personalityListWrapper {
+    justify-content: center;
+  }
+  .personalityList {
+    width: 60%;
+    margin: auto;
+  }
+}
+
