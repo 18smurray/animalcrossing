@@ -32,6 +32,9 @@ function SearchBar(props) {
         
         if (searchName.name in searchDict){
             // Change what gets rendered in SearchResult
+            //searchDict.filter((n) => n)
+            //iterate over keys and return keys that match... (using filter)
+            //Object.keys(searchDict).filter(k => k.includes(searchName.name))
             setResult([searchDict[searchName.name]]);
         }
         //else if - could try something with partial

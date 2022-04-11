@@ -360,6 +360,11 @@ header {
   font-size: 16px;
 }
 
+.noPersonalityMatch {
+  color: #fff893;
+  font-size: 14px;
+}
+
 /*
 Base color brown #6d4814;
 Font color light yellow: #fff893;

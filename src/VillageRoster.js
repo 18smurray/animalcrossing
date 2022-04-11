@@ -22,7 +22,7 @@ function VillageRoster(props) {
                     <img src={villager.image_uri} className="profilePic"></img>
                     <h3 className='villagerName'>{villager.name}</h3>
                     <Link to={`villager/${villager.id}`} key={villager.id}>
-                        <button className='moreInfo'>INFO</button>
+                        <button className='moreInfo' onClick={() => {window.scrollTo({top: 0, behavior: 'smooth'}), document.activeElement.blur()}}>INFO</button>
                     </Link>
                     <button className='remove' onClick={() => evictVillager(villager.id)}>&times;</button>
                 </div>

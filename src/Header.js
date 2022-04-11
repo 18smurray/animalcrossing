@@ -5,10 +5,11 @@ export default function Header () {
     return (
         <header className="appHeader">
             <Link to="/">
-                <button className="searchButton">HOME</button>
+                <button className="searchButton" onClick={() => document.activeElement.blur()}>HOME</button>
             </Link>
             <Link to="/search">
-                <button className="searchButton">SEARCH</button>
+                {/* remove focus when clicked */}
+                <button className="searchButton" onClick={() => document.activeElement.blur()}>SEARCH</button>
             </Link>
             <div className="centerHead">
                 <h1 className='title'>ANIMAL CROSSING VILLAGER EXPLORER</h1>
