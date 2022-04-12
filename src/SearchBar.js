@@ -29,13 +29,15 @@ function SearchBar(props) {
         // Change resultStatus to pending
         setResultStatus("pending");
         setIsLoading(true);
+
+        let nameList = Object.keys(searchDict).filter(k => k.includes(searchName.name));
+        //console.log(keyList);
         
-        if (searchName.name in searchDict){
-            // Change what gets rendered in SearchResult
-            //searchDict.filter((n) => n)
-            //iterate over keys and return keys that match... (using filter)
-            //Object.keys(searchDict).filter(k => k.includes(searchName.name))
-            setResult([searchDict[searchName.name]]);
+        if (nameList.length > 0) {
+            let keysToReturn = [];
+            nameList.forEach(name => keysToReturn.push(searchDict[name]))
+            //console.log(keysToReturn);
+            setResult(keysToReturn);
         }
         //else if - could try something with partial
         else {

@@ -362,7 +362,19 @@ header {
 
 .noPersonalityMatch {
   color: #fff893;
+  font-size: 16px;
+}
+
+.searchGrid { 
+  padding-top: 20px;
+  display: flex;
   font-size: 14px;
+  width: 75%;
+  margin:auto;
+  justify-content: center;
+}
+.searchGrid h5 {
+  font-size: 12px;
 }
 
 /*
@@ -423,6 +435,9 @@ Dark green: 02544B */
   .personalityList {
     width: 60%;
     margin: auto;
+    display: flex;
+    justify-content: center;
+    max-width: 60px;
   }
 
 }

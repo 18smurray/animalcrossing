@@ -63,26 +63,32 @@ function PersonalityMatrix(props) {
           <div className='listTitle'>LIKELY TO GET ALONG</div>
           <div className="personalityListWrapper">
             <div className='personalityList'>
-                {harmonyVillagers.map(villager => (
-                    <div key={villager.id}>
-                        <Link to={`/villager/${villager.id}`} key={villager.id}>
-                            <img src={villager.icon_uri} className="villagerIcon" />
-                            {villager.name}
-                        </Link>
-                    </div>
-                ))}
+                {harmonyVillagers.length > 0 ? 
+                    harmonyVillagers.map(villager => (
+                        <div key={villager.id}>
+                            <Link to={`/villager/${villager.id}`} key={villager.id}>
+                                <img src={villager.icon_uri} className="villagerIcon" />
+                                {villager.name}
+                            </Link>
+                        </div>
+                    ))
+                :<div className="noPersonalityMatch">None</div>}
             </div>
           </div>
           <div className='listTitle'>LIKELY TO CONFLICT</div>
           <div className='personalityList'>
-                {conflictVillagers.map(villager => (
+              {conflictVillagers.length > 0 ? 
+              
+                conflictVillagers.map(villager => (
                     <div key={villager.id}>
                         <Link to={`/villager/${villager.id}`} key={villager.id}>
                             <img src={villager.icon_uri} className="villagerIcon" />
                             {villager.name}
                         </Link>
                     </div>
-                ))}
+                ))
+
+                : <div className="noPersonalityMatch">None</div>}
             </div>
       </div>
     )
