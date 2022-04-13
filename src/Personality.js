@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 function PersonalityMatrix(props) {
 
+    // Destructure props
     const {roster, setRoster} = props;
     const currentVillager = props.currentVillager;
 
-    // TO DO - Don't include villager themself in list (normal)
-
+    // Dictionary for referencing which personality types get along
     const HARMONY_MATRIX = {
         "Normal": ["Normal", "Lazy", "Jock", "Peppy", "Smug"],
         "Lazy": ["Normal", "Lazy", "Uchi", "Peppy", "Smug"],
@@ -18,6 +18,7 @@ function PersonalityMatrix(props) {
         "Peppy": ["Normal", "Lazy", "Uchi", "Jock", "Smug"],
         "Smug": ["Normal", "Lazy", "Uchi", "Peppy", "Smug"]
     }
+    // Dictionary for referencing which personality types conflict
     const CONFLICT_MATRIX = {
         "Normal": [],
         "Lazy": ["Jock"],
@@ -29,6 +30,8 @@ function PersonalityMatrix(props) {
         "Smug": ["Cranky"]
     }
 
+    // Given an array of personality types, return an array of
+    // registered villagers that have one of those personality types
     function getVillagerArray(personalityArray){
         let villagerArray = [];
         // React renders components BEFORE running code
@@ -45,17 +48,23 @@ function PersonalityMatrix(props) {
         return villagerArray;
     }
 
+    // Return two arrays based on personality types
+        //Registered villagers that get along with the current villager
+        //Registered villagers that conflict with the current villager
     function buildLists() {
+        // Get the corresponding harmony and conflict personality arrays based on current villager personality
         const currentPersonality = currentVillager.personality;
         const harmonyTypes = HARMONY_MATRIX[currentPersonality];
         const conflictTypes = CONFLICT_MATRIX[currentPersonality];
     
+        // Get arrays of registered villagers that have one of the personality types from the appropriate list
         const harmonyVillagers = getVillagerArray(harmonyTypes);
         const conflictVillagers = getVillagerArray(conflictTypes);
 
         return [harmonyVillagers, conflictVillagers];
     }
     
+    // Destructure the return from buildLists()
     const [harmonyVillagers, conflictVillagers] = buildLists();
 
     return (

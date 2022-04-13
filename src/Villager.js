@@ -8,23 +8,28 @@ import { ActFromProfile } from './ActFromProfile';
 
 function VillagerInfo(props) {
     
-    const [villager, setVillager] = useState([]);
+    // Destructure props
     const {roster, setRoster} = props;
     const {usedIds, setUsedIds} = props;
+
+    // State variable
+    const [villager, setVillager] = useState([]);
     
+    // Get villager id parameter passed in the url using useParams()
     const params = useParams();
     const villagerId = params.villagerIndex;
 
     useEffect(() => {
         getVillagerInfo()
-      }, [params])
-      // Had villager as dependency - leads to endless requests...
-      // Switch to params - indicates a change in the hash :)
+    // Dependency on params - rerender when id in the hash changes
+    }, [params])
 
+    // Helper function for getting English name
     const clarifyName = (data) => {
         data.name = data.name["name-USen"]
     }
   
+    // Using the villagerId passed in the url, get the corresponding villager information
     const getVillagerInfo = () => {
       axios.get("https://acnhapi.com/v1/villagers/" + villagerId)
       .then(response => {

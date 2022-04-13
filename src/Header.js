@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
+// Header to be loaded at the top - includes navbar button navigation links
 export default function Header () {
     return (
         <header className="appHeader">
+            {/* remove focus when clicked - document.activeElement.blur() */}
             <Link to="/">
                 <button className="searchButton" onClick={() => document.activeElement.blur()}>HOME</button>
             </Link>
             <Link to="/search">
-                {/* remove focus when clicked */}
                 <button className="searchButton" onClick={() => document.activeElement.blur()}>SEARCH</button>
             </Link>
             <div className="centerHead">

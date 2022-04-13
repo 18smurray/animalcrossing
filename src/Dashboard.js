@@ -6,41 +6,44 @@ import spinner from './spinner.gif';
 
 function Dashboard(props) {
 
-    // 391 possible characters
-    const TOTAL_IDS = 391;
+     // Destructure props
+     const {roster, setRoster} = props;
+     const {usedIds, setUsedIds} = props;
+     const TOTAL_VILLAGERS = props.TOTAL_VILLAGERS;
 
+    // State variables
     const [canidate, setCanidate] = useState({});
     const [showModal, setShowModal] = useState(false);
     const [imageLoading, setImageLoading] = useState(true);
-    const {roster, setRoster} = props;
-    const {usedIds, setUsedIds} = props;
 
     useEffect(() => {
       canidateApproaches()
     }, [])
-    // Dependencies - when dependency updates, the function is rerun
-    // If no dependencies, runs once when rendered
   
+    // Function for generating a random villager id that isn't already in the roster
     const randomVillagerId = () => {
-
         // Generate random id number
         let min = Math.ceil(1);
-        let max = Math.floor(TOTAL_IDS);
+        let max = Math.floor(TOTAL_VILLAGERS);
         let randomId =  Math.floor(Math.random() * (max - min + 1)) + min;  
 
         // Ensure villager isn't already in roster (id isn't already used)
+        // Only 10 ids out of 391 can be used at a time 
         while (usedIds.includes(randomId)){
             min = Math.ceil(1);
-            max = Math.floor(TOTAL_IDS);
+            max = Math.floor(TOTAL_VILLAGERS);
             randomId =  Math.floor(Math.random() * (max - min + 1)) + min;  
         }
+
         return randomId;
     }
   
+    // Helper function for getting the English name
     const clarifyName = (data) => {
         data.name = data.name["name-USen"]
     }
   
+    // Function for getting the data for a randomly generated villager id
     const canidateApproaches = () => {
       axios.get("https://acnhapi.com/v1/villagers/" + randomVillagerId())
       .then(response => {
@@ -49,13 +52,17 @@ function Dashboard(props) {
       })
     }
   
+    // Function for adding current villager to the roster
     const recruitVillager = (villager) => {
 
+      // Ensure roster is not full 
       if (roster.length < 10) {
-        // Append instead of erase state
+        // Append current villager to state
         setRoster(state => {
+          // Check if villager id is already in the roster
           const villagerExists = (state.filter(v => villager.id == v.id).length > 0);
-          
+        
+          // If not in the roster, add current villager and sort by id
           if (!villagerExists) {
               state = [...state, villager]
               state.sort(function (a, b) {
@@ -64,15 +71,19 @@ function Dashboard(props) {
           }
           return state
         });
+
         setUsedIds([...usedIds, villager.id]);
         setShowModal(false);
+        // Load next canidate
         canidateApproaches();
       }
+      // If roster already has 10 villagers, show modal
       else {
         setShowModal(true);
       }
     }
   
+    // If villager is skipped, generate another random villager without adding the current villager to the roster
     const skipVillager = () => {
       canidateApproaches();
     }
