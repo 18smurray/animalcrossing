@@ -52,7 +52,9 @@ function VillagerInfo(props) {
                         Gender: {villager.gender} <br/>
                         Birthday: {villager["birthday-string"]} <br/>
                         Personality: {villager.personality} <br/>
+                        Hobby: {villager.hobby} <br />
                         Catch Phrase: "{villager["catch-phrase"]}"<br/>
+                        Saying: "{villager.saying}" <br /> 
                     </div>
                     <PersonalityMatrix roster={roster} setRoster={setRoster} currentVillager={villager}/>
                    
