@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { PersonalityMatrix } from './Personality';
 import { ActFromProfile } from './ActFromProfile';
+import { ClarifyName } from './HelperFunctions/ClarifyName';
 
 function VillagerInfo(props) {
     
@@ -22,17 +23,12 @@ function VillagerInfo(props) {
         getVillagerInfo()
     // Dependency on params - rerender when id in the hash changes
     }, [params])
-
-    // Helper function for getting English name
-    const clarifyName = (data) => {
-        data.name = data.name["name-USen"]
-    }
   
     // Using the villagerId passed in the url, get the corresponding villager information
     const getVillagerInfo = () => {
       axios.get("https://acnhapi.com/v1/villagers/" + villagerId)
       .then(response => {
-        const cleanData = clarifyName(response.data)
+        ClarifyName(response.data);
         setVillager(response.data);
       })
     }

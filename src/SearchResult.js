@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { ClarifyName } from './HelperFunctions/ClarifyName';
 
 function SearchResult(props) {
 
@@ -18,7 +19,7 @@ function SearchResult(props) {
             // For each id in the result array, get the villager data
             // Wait for all promises to resolve before setting the state variable
             Promise.all(result.map(id => axios.get("https://acnhapi.com/v1/villagers/" + id)
-            .then(response => {clarifyName(response.data); return response.data;}
+            .then(response => {ClarifyName(response.data); return response.data;}
             ))).then(response => {setfoundVillagers(response)});
 
         }
@@ -32,11 +33,7 @@ function SearchResult(props) {
         }
       }, [result])
 
-    // Helper function for getting the English name
-    const clarifyName = (data) => {
-        data.name = data.name["name-USen"]
-    }
-
+      
     // If no search has been performed, don't return anything
     if (foundVillagers.length === 0){
         return 

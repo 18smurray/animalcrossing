@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import './index.css';
 import { Modal } from './Modal';
-import spinner from './spinner.gif';
+import spinner from './StaticMedia/spinner.gif';
+import { ClarifyName } from './HelperFunctions/ClarifyName.js';
 
 function Dashboard(props) {
 
@@ -38,16 +39,11 @@ function Dashboard(props) {
         return randomId;
     }
   
-    // Helper function for getting the English name
-    const clarifyName = (data) => {
-        data.name = data.name["name-USen"]
-    }
-  
     // Function for getting the data for a randomly generated villager id
     const canidateApproaches = () => {
       axios.get("https://acnhapi.com/v1/villagers/" + randomVillagerId())
       .then(response => {
-        clarifyName(response.data);
+        ClarifyName(response.data);
         setCanidate(response.data);
       })
     }

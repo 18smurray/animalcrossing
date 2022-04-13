@@ -1,16 +1,10 @@
 import {Link} from 'react-router-dom';
+import { EvictVillager } from './HelperFunctions/EvictVillager';
 
 function VillageRoster(props) {
 
     // Destructure props
     const {roster, setRoster, setUsedIds} = props;
-
-    // Function for removing a villager from the roster
-    const evictVillager = id => {
-      // Return all villagers except the one being removed
-      setUsedIds(state => state.filter(v => v != id));
-      setRoster(state => state.filter(v => v.id != id));
-    }
 
     return (
       <section className='villagerRoster'>
@@ -24,7 +18,7 @@ function VillageRoster(props) {
                     <Link to={`villager/${villager.id}`} key={villager.id}>
                         <button className='moreInfo' onClick={() => {window.scrollTo({top: 0, behavior: 'smooth'}); document.activeElement.blur()}}>INFO</button>
                     </Link>
-                    <button className='remove' onClick={() => evictVillager(villager.id)}>&times;</button>
+                    <button className='remove' onClick={() => EvictVillager(setRoster, setUsedIds, villager.id)}>&times;</button>
                 </div>
             ))}
           </div>

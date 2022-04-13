@@ -6,6 +6,7 @@ import Header from './Header.js';
 import {VillageRoster} from './VillageRoster.js';
 import { SearchBar } from './SearchBar.js';
 import axios from 'axios';
+import { ClarifyName } from './HelperFunctions/ClarifyName.js';
 
 function App() {
     // State variables
@@ -25,12 +26,7 @@ function App() {
         const data = await getSearchData();
         setSearchDict(data);
     }
-    
-    // Helper function for getting the English name 
-    const clarifyName = (data) => {
-        data.name = data.name["name-USen"]
-    }
-  
+
     // Function for generating a name:id dictionary for all villagers
     // To be used by the SearchBar component when matching names to ids
     const getSearchData = () => {
@@ -39,7 +35,7 @@ function App() {
         for (let i = 1; i <= TOTAL_VILLAGERS; i++){
             axios.get("https://acnhapi.com/v1/villagers/" + i)
             .then(response => {
-                clarifyName(response.data);
+                ClarifyName(response.data);
                 searchPairs[(response.data.name).toLowerCase()] = response.data.id;
             })
         }

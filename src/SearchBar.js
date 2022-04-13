@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { SearchResult } from './SearchResult';
-import spinner from './spinner.gif';
+import spinner from './StaticMedia/spinner.gif';
 
 function SearchBar(props) {
 

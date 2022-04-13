@@ -1,17 +1,11 @@
+import { EvictVillager } from "./HelperFunctions/EvictVillager";
+
 function ActFromProfile(props) {
 
     // Destructure props
     const {roster, setRoster} = props;
     const {usedIds, setUsedIds} = props;
     const currentVillager = props.currentVillager;
-
-    // Function for removing a villager from the roster
-    const evictVillager = id => {
-        // Return all villagers except the one being removed
-        setRoster(state => state.filter(v => v.id !== id));
-        // Remove corresponding id from the usedIds list 
-        setUsedIds(state => state.filter(v => v !== id));
-    }
 
     // Function for adding a villager to the roster from the profile page
     const recruitVillager = (villager) => {
@@ -37,7 +31,7 @@ function ActFromProfile(props) {
     // If roster is full, don't return any additional action buttons
     if(roster.some(e => e.id === currentVillager.id)) {
         return (
-            <button className='canidateButton' onClick={() => evictVillager(currentVillager.id)}>REMOVE</button>
+            <button className='canidateButton' onClick={() => EvictVillager(setRoster, setUsedIds, currentVillager.id)}>REMOVE</button>
           )
       }
     else if (roster.length < 10){
