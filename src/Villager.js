@@ -1,4 +1,3 @@
-import React, { Component } from 'react'
 import { useParams } from 'react-router-dom'
 import {useState, useEffect} from 'react';
 import axios from 'axios';
@@ -61,7 +60,7 @@ function VillagerInfo(props) {
                         Catch Phrase: "{villager["catch-phrase"]}"<br/>
                         Saying: "{villager.saying}" <br /> 
                     </div>
-                    <PersonalityMatrix roster={roster} setRoster={setRoster} currentVillager={villager}/>
+                    <PersonalityMatrix roster={roster} currentVillager={villager}/>
                    
                 </div>
                 <Link to="/">

@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { SearchResult } from './SearchResult';
 import spinner from './spinner.gif';
 
@@ -62,7 +61,7 @@ function SearchBar(props) {
                 : null      
             }
 
-            <SearchResult result={result} setResult={setResult} isLoading={isLoading} setIsLoading={setIsLoading}/>
+            <SearchResult result={result} setIsLoading={setIsLoading}/>
       </section>
     )
 }

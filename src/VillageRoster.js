@@ -3,8 +3,7 @@ import {Link} from 'react-router-dom';
 function VillageRoster(props) {
 
     // Destructure props
-    const {roster, setRoster} = props;
-    const {usedIds, setUsedIds} = props;
+    const {roster, setRoster, setUsedIds} = props;
 
     // Function for removing a villager from the roster
     const evictVillager = id => {

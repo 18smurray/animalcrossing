@@ -1,11 +1,9 @@
-import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
 function PersonalityMatrix(props) {
 
     // Destructure props
-    const {roster, setRoster} = props;
-    const currentVillager = props.currentVillager;
+    const {roster, currentVillager} = props;
 
     // Dictionary for referencing which personality types get along
     const HARMONY_MATRIX = {

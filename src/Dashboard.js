@@ -47,7 +47,7 @@ function Dashboard(props) {
     const canidateApproaches = () => {
       axios.get("https://acnhapi.com/v1/villagers/" + randomVillagerId())
       .then(response => {
-        const cleanData = clarifyName(response.data)
+        clarifyName(response.data);
         setCanidate(response.data);
       })
     }
@@ -60,7 +60,7 @@ function Dashboard(props) {
         // Append current villager to state
         setRoster(state => {
           // Check if villager id is already in the roster
-          const villagerExists = (state.filter(v => villager.id == v.id).length > 0);
+          const villagerExists = (state.filter(v => villager.id === v.id).length > 0);
         
           // If not in the roster, add current villager and sort by id
           if (!villagerExists) {

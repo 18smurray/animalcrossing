@@ -1,4 +1,3 @@
-import React, { Component } from 'react'
 import './index.css';
 
 // Component that becomes visible when user tries to register more than 10 villagers

@@ -5,9 +5,7 @@ import { Link } from 'react-router-dom';
 function SearchResult(props) {
 
     // Destructure props
-    const {result, setResult} = props;
-    // Either inactive or pending
-    const {isLoading, setIsLoading} = props;
+    const {result, setIsLoading} = props;
 
     // State variable
     const [foundVillagers, setfoundVillagers] = useState([]);
