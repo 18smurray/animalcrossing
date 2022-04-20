@@ -11,6 +11,9 @@ export default function Header () {
             <Link to="/search">
                 <button className="searchButton" onClick={() => document.activeElement.blur()}>SEARCH</button>
             </Link>
+            <Link to="/browse">
+                <button className="searchButton" onClick={() => document.activeElement.blur()}>BROWSE</button>
+            </Link>
             <div className="centerHead">
                 <h1 className='title'>ANIMAL CROSSING VILLAGER EXPLORER</h1>
                 <h3 className='subtitle'>SHANNON MURRAY IS542 SEMESTER PROJECT</h3>

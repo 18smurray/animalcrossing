@@ -23,7 +23,7 @@ function ActFromProfile(props) {
             }
             return state
         });
-        setUsedIds([...usedIds, villager.id]);
+        setUsedIds([usedIds, villager.id]);
     }
 
     // If villager is already in roster, have option to remove
